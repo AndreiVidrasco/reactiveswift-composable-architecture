@@ -42,7 +42,7 @@ extension Location: Hashable {
     let floorEqual: Bool
 
     #if compiler(>=5.2)
-      if #available(iOS 13.4, macCatalyst 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
+      if #available(iOS 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
         courseAccuracyIsEqual = lhs.courseAccuracy == rhs.courseAccuracy
         speedAccuracyIsEqual = lhs.speedAccuracy == rhs.speedAccuracy
         floorEqual = lhs.floor == rhs.floor
@@ -80,7 +80,7 @@ extension Location: Hashable {
     hasher.combine(self.verticalAccuracy)
 
     #if compiler(>=5.2)
-      if #available(iOS 13.4, macCatalyst 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
+      if #available(iOS 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
         hasher.combine(self.floor)
         hasher.combine(self.speedAccuracy)
         hasher.combine(self.courseAccuracy)
@@ -102,7 +102,7 @@ extension Location: Hashable {
       timestamp: Date = Date(),
       verticalAccuracy: CLLocationAccuracy = 0
     ) {
-      if #available(iOS 13.4, macCatalyst 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
+      if #available(iOS 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
         self.rawValue = CLLocation(
           coordinate: coordinate,
           altitude: altitude,
@@ -142,7 +142,7 @@ extension Location: Codable {
     let verticalAccuracy = try values.decode(CLLocationAccuracy.self, forKey: .verticalAccuracy)
 
     #if compiler(>=5.2)
-      if #available(iOS 13.4, macCatalyst 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
+      if #available(iOS 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
         let courseAccuracy = try values.decode(Double.self, forKey: .courseAccuracy)
         let speedAccuracy = try values.decode(Double.self, forKey: .speedAccuracy)
 
@@ -193,7 +193,7 @@ extension Location: Codable {
     try container.encode(rawValue.verticalAccuracy, forKey: .verticalAccuracy)
 
     #if compiler(>=5.2)
-      if #available(iOS 13.4, macCatalyst 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
+      if #available(iOS 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
         try container.encode(rawValue.courseAccuracy, forKey: .courseAccuracy)
       }
       if #available(OSX 10.15, *) {

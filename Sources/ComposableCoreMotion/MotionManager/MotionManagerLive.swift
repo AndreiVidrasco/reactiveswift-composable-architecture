@@ -4,8 +4,7 @@
   import ReactiveSwift
 
   @available(iOS 4, *)
-  @available(macCatalyst 13, *)
-  @available(macOS, unavailable)
+    @available(macOS, unavailable)
   @available(tvOS, unavailable)
   @available(watchOS 2, *)
   extension MotionManager {

@@ -220,7 +220,6 @@ public struct LocationManager {
 
     case didUpdateLocations([Location])
 
-    @available(macCatalyst, deprecated: 13)
     @available(tvOS, unavailable)
     case didUpdateTo(newLocation: Location, oldLocation: Location)
 
@@ -582,7 +581,7 @@ extension LocationManager {
 
     public static func == (lhs: Self, rhs: Self) -> Bool {
       var isEqual = true
-      #if os(iOS) || targetEnvironment(macCatalyst) || os(watchOS)
+      #if os(iOS) || os(watchOS)
         isEqual =
           isEqual
           && lhs.activityType == rhs.activityType
@@ -592,13 +591,13 @@ extension LocationManager {
         isEqual
         && lhs.desiredAccuracy == rhs.desiredAccuracy
         && lhs.distanceFilter == rhs.distanceFilter
-      #if os(iOS) || targetEnvironment(macCatalyst) || os(watchOS)
+      #if os(iOS) || os(watchOS)
         isEqual =
           isEqual
           && lhs.headingFilter == rhs.headingFilter
           && lhs.headingOrientation == rhs.headingOrientation
       #endif
-      #if os(iOS) || targetEnvironment(macCatalyst)
+      #if os(iOS)
         isEqual =
           isEqual
           && lhs.pausesLocationUpdatesAutomatically == rhs.pausesLocationUpdatesAutomatically

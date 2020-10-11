@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// A data type that describes the state of an action sheet that can be shown to the user. The
@@ -100,7 +101,6 @@ import SwiftUI
 ///     )
 ///
 @available(iOS 13, *)
-@available(macCatalyst 13, *)
 @available(macOS 10.15, *)
 @available(tvOS 13, *)
 @available(watchOS 6, *)
@@ -124,7 +124,6 @@ public struct ActionSheetState<Action> {
 }
 
 @available(iOS 13, *)
-@available(macCatalyst 13, *)
 @available(macOS 10.15, *)
 @available(tvOS 13, *)
 @available(watchOS 6, *)
@@ -140,7 +139,6 @@ extension ActionSheetState: CustomDebugOutputConvertible {
 }
 
 @available(iOS 13, *)
-@available(macCatalyst 13, *)
 @available(macOS 10.15, *)
 @available(tvOS 13, *)
 @available(watchOS 6, *)
@@ -153,7 +151,6 @@ extension ActionSheetState: Equatable where Action: Equatable {
 }
 
 @available(iOS 13, *)
-@available(macCatalyst 13, *)
 @available(macOS 10.15, *)
 @available(tvOS 13, *)
 @available(watchOS 6, *)
@@ -166,14 +163,12 @@ extension ActionSheetState: Hashable where Action: Hashable {
 }
 
 @available(iOS 13, *)
-@available(macCatalyst 13, *)
 @available(macOS 10.15, *)
 @available(tvOS 13, *)
 @available(watchOS 6, *)
 extension ActionSheetState: Identifiable {}
 
 @available(iOS 13, *)
-@available(macCatalyst 13, *)
 @available(macOS 10.15, *)
 @available(tvOS 13, *)
 @available(watchOS 6, *)
@@ -187,8 +182,7 @@ extension View {
   ///     such as when an action sheet is automatically dismissed by the system. Use this action to
   ///     `nil` out the associated action sheet state.
   @available(iOS 13, *)
-  @available(macCatalyst 13, *)
-  @available(macOS, unavailable)
+    @available(macOS, unavailable)
   @available(tvOS 13, *)
   @available(watchOS 6, *)
   public func actionSheet<Action>(
@@ -205,7 +199,6 @@ extension View {
 }
 
 @available(iOS 13, *)
-@available(macCatalyst 13, *)
 @available(macOS 10.15, *)
 @available(tvOS 13, *)
 @available(watchOS 6, *)
@@ -221,3 +214,4 @@ extension ActionSheetState {
     )
   }
 }
+#endif

@@ -2,7 +2,7 @@ import CoreLocation
 
 /// A value type wrapper for `CLHeading`. This type is necessary so that we can do equality checks
 /// and write tests against its values.
-@available(iOS 3, macCatalyst 13, watchOS 2, *)
+@available(iOS 3, watchOS 2, *)
 @available(macOS, unavailable)
 @available(tvOS, unavailable)
 public struct Heading: Hashable {

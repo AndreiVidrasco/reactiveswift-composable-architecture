@@ -2,7 +2,7 @@ import CoreLocation
 
 /// A value type wrapper for `CLVisit`. This type is necessary so that we can do equality checks
 /// and write tests against its values.
-@available(iOS 8, macCatalyst 13, *)
+@available(iOS 8, *)
 @available(macOS, unavailable)
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)

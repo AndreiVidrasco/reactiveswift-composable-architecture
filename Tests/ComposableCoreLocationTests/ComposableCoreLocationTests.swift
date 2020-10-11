@@ -10,7 +10,7 @@ class ComposableCoreLocationTests: XCTestCase {
     let value: Location
 
     #if compiler(>=5.2)
-      if #available(iOS 13.4, macCatalyst 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
+      if #available(iOS 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
         value = Location(
           altitude: 50,
           coordinate: CLLocationCoordinate2D(latitude: 10, longitude: 20),
@@ -78,7 +78,7 @@ class ComposableCoreLocationTests: XCTestCase {
 
   #if compiler(>=5.2)
     func testLocationEquatable_5_2() {
-      if #available(iOS 13.4, macCatalyst 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
+      if #available(iOS 13.4, macOS 10.15.4, tvOS 13.4, watchOS 6.2, *) {
         let a = Location(
           altitude: 1,
           coordinate: CLLocationCoordinate2D(latitude: 1, longitude: 1),
