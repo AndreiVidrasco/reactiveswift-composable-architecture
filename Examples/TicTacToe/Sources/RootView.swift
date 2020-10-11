@@ -1,5 +1,4 @@
 import AppCore
-import AppSwiftUI
 import ComposableArchitecture
 import ReactiveSwift
 import SwiftUI
@@ -49,11 +48,7 @@ struct RootView: View {
         }
       }
       .sheet(item: self.$showGame) { gameType in
-        if gameType == .swiftui {
-          AppView(store: self.store)
-        } else {
-          UIKitAppView(store: self.store)
-        }
+        UIKitAppView(store: self.store)
       }
       .navigationBarTitle("Tic-Tac-Toe")
     }

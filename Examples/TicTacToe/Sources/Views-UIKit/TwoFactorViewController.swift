@@ -72,23 +72,22 @@ public final class TwoFactorViewController: UIViewController {
       rootStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
       rootStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
     ])
-
-    self.viewStore.produced.isActivityIndicatorHidden
+    self.viewStore.value(\.isActivityIndicatorHidden)
       .assign(to: \.isHidden, on: activityIndicator)
 
-    self.viewStore.produced.code
+    self.viewStore.value(\.code)
       .assign(to: \.text, on: codeTextField)
 
-    self.viewStore.produced.isLoginButtonEnabled
+    self.viewStore.value(\.isLoginButtonEnabled)
       .assign(to: \.isEnabled, on: loginButton)
 
-    self.viewStore.produced.alert
+    self.viewStore.value(\.alert)
       .startWithValues { [weak self] alert in
         guard let self = self else { return }
         guard let alert = alert else { return }
 
         let alertController = UIAlertController(
-          title: alert.title.formatted(), message: nil, preferredStyle: .alert)
+            title: alert.title, message: alert.message, preferredStyle: .alert)
         alertController.addAction(
           UIAlertAction(
             title: "Ok", style: .default,
@@ -130,4 +129,10 @@ extension TwoFactorAction {
       return .submitButtonTapped
     }
   }
+}
+
+extension ViewStore {
+    func value<Result>(_ keyPath: KeyPath<State, Result>) -> SignalProducer<Result, Never> where Result: Equatable {
+        return produced.producer.map(keyPath).skipRepeats()
+    }
 }

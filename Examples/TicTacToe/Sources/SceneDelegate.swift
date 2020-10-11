@@ -1,5 +1,4 @@
 import AppCore
-import AppSwiftUI
 import ComposableArchitecture
 import LiveAuthenticationClient
 import SwiftUI

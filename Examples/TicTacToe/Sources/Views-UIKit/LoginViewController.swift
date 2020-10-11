@@ -104,32 +104,31 @@ class LoginViewController: UIViewController {
       rootStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
       divider.heightAnchor.constraint(equalToConstant: 1),
     ])
-
-    self.viewStore.produced.isLoginButtonEnabled
+    self.viewStore.value(\.isLoginButtonEnabled)
       .assign(to: \.isEnabled, on: loginButton)
 
-    self.viewStore.produced.email
+    self.viewStore.value(\.email)
       .assign(to: \.text, on: emailTextField)
 
-    self.viewStore.produced.isEmailTextFieldEnabled
+    self.viewStore.value(\.isEmailTextFieldEnabled)
       .assign(to: \.isEnabled, on: emailTextField)
 
-    self.viewStore.produced.password
+    self.viewStore.value(\.password)
       .assign(to: \.text, on: passwordTextField)
 
-    self.viewStore.produced.isPasswordTextFieldEnabled
+    self.viewStore.value(\.isPasswordTextFieldEnabled)
       .assign(to: \.isEnabled, on: passwordTextField)
 
-    self.viewStore.produced.isActivityIndicatorHidden
+    self.viewStore.value(\.isActivityIndicatorHidden)
       .assign(to: \.isHidden, on: activityIndicator)
 
-    self.viewStore.produced.alert
+    self.viewStore.value(\.alert)
       .startWithValues { [weak self] alert in
         guard let self = self else { return }
         guard let alert = alert else { return }
 
         let alertController = UIAlertController(
-          title: alert.title.formatted(), message: nil, preferredStyle: .alert)
+            title: alert.title, message: alert.message, preferredStyle: .alert)
         alertController.addAction(
           UIAlertAction(
             title: "Ok", style: .default,

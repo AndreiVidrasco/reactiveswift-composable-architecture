@@ -88,16 +88,12 @@
 		DC9195A324201B3B00A5BE1F /* LoginSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9195A124201B3B00A5BE1F /* LoginSwiftUITests.swift */; };
 		DCAF10D1242027D400483288 /* TwoFactorSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAF10C8242027D400483288 /* TwoFactorSwiftUI.framework */; };
 		DCAF10D8242027D400483288 /* TwoFactorSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAF10D7242027D400483288 /* TwoFactorSwiftUITests.swift */; };
-		DCAF1152242029EE00483288 /* TwoFactorSwiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAF1151242029EE00483288 /* TwoFactorSwiftView.swift */; };
 		DCAF115D24202A5700483288 /* AuthenticationClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC919425242012D200A5BE1F /* AuthenticationClient.framework */; };
 		DCAF115E24202A5C00483288 /* TicTacToeCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAF11312420293300483288 /* TicTacToeCommon.framework */; };
 		DCAF116124202B1000483288 /* TwoFactorCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC9194D42420144700A5BE1F /* TwoFactorCore.framework */; };
-		DCAF117D24202C9600483288 /* LoginSwiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAF117C24202C9600483288 /* LoginSwiftView.swift */; };
 		DCAF118024202D3C00483288 /* TwoFactorCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC9194D42420144700A5BE1F /* TwoFactorCore.framework */; };
 		DCAF118F24202DCB00483288 /* LoginCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC91946A242013DB00A5BE1F /* LoginCore.framework */; };
-		DCAF119C24202F1300483288 /* GameSwiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAF119B24202F1300483288 /* GameSwiftView.swift */; };
 		DCAF11A524202F9700483288 /* GameCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC91953C24201A8700A5BE1F /* GameCore.framework */; };
-		DCAF11A924202FF200483288 /* NewGameSwiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAF11A824202FF200483288 /* NewGameSwiftView.swift */; };
 		DCAF11B22420305200483288 /* GameCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC91953C24201A8700A5BE1F /* GameCore.framework */; };
 		DCAF11BB2420312800483288 /* NewGameCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC9194F824201A7800A5BE1F /* NewGameCore.framework */; };
 		DCAF11BE242031ED00483288 /* TicTacToeCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAF11312420293300483288 /* TicTacToeCommon.framework */; };
@@ -109,7 +105,6 @@
 		DCAF11CE2420339100483288 /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAF11CD2420339100483288 /* AppCore.swift */; };
 		DCAF11D7242033EB00483288 /* NewGameCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC9194F824201A7800A5BE1F /* NewGameCore.framework */; };
 		DCAF11D8242033F000483288 /* LoginCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC91946A242013DB00A5BE1F /* LoginCore.framework */; };
-		DCAF11DC2420340900483288 /* AppSwiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAF11DB2420340900483288 /* AppSwiftView.swift */; };
 		DCAF11E5242034D200483288 /* NewGameSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC91951A24201A8100A5BE1F /* NewGameSwiftUI.framework */; };
 		DCAF11E8242034DA00483288 /* LoginSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC9194B22420142600A5BE1F /* LoginSwiftUI.framework */; };
 		DCAF11EB2420352B00483288 /* GameSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC91955E24201A8D00A5BE1F /* GameSwiftUI.framework */; };
@@ -602,17 +597,12 @@
 		DCAF10EC242028DE00483288 /* AppCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCAF110E242028E600483288 /* AppSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCAF11312420293300483288 /* TicTacToeCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TicTacToeCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCAF1151242029EE00483288 /* TwoFactorSwiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFactorSwiftView.swift; sourceTree = "<group>"; };
-		DCAF117C24202C9600483288 /* LoginSwiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwiftView.swift; sourceTree = "<group>"; };
-		DCAF119B24202F1300483288 /* GameSwiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSwiftView.swift; sourceTree = "<group>"; };
-		DCAF11A824202FF200483288 /* NewGameSwiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameSwiftView.swift; sourceTree = "<group>"; };
 		DCAF11BF242032F000483288 /* TwoFactorCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFactorCore.swift; sourceTree = "<group>"; };
 		DCAF11C12420330100483288 /* LoginCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCore.swift; sourceTree = "<group>"; };
 		DCAF11C32420330E00483288 /* NewGameCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameCore.swift; sourceTree = "<group>"; };
 		DCAF11C52420331A00483288 /* GameCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCore.swift; sourceTree = "<group>"; };
 		DCAF11C72420335500483288 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		DCAF11CD2420339100483288 /* AppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCore.swift; sourceTree = "<group>"; };
-		DCAF11DB2420340900483288 /* AppSwiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSwiftView.swift; sourceTree = "<group>"; };
 		DCEAF4BA242D08D900E4639F /* swift-composable-architecture */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "swift-composable-architecture"; path = ../..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -829,18 +819,6 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		CA6AC2592450FA5500C71CB3 /* Views-SwiftUI */ = {
-			isa = PBXGroup;
-			children = (
-				DCAF11DB2420340900483288 /* AppSwiftView.swift */,
-				DCAF119B24202F1300483288 /* GameSwiftView.swift */,
-				DCAF117C24202C9600483288 /* LoginSwiftView.swift */,
-				DCAF11A824202FF200483288 /* NewGameSwiftView.swift */,
-				DCAF1151242029EE00483288 /* TwoFactorSwiftView.swift */,
-			);
-			path = "Views-SwiftUI";
-			sourceTree = "<group>";
-		};
 		CA6AC25A2450FA5B00C71CB3 /* Views-UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -874,7 +852,6 @@
 				CA0A5765242AA3A800BA537D /* SceneDelegate.swift */,
 				DCAF11322420293300483288 /* Common */,
 				CA6AC2582450FA5000C71CB3 /* Core */,
-				CA6AC2592450FA5500C71CB3 /* Views-SwiftUI */,
 				CA6AC25A2450FA5B00C71CB3 /* Views-UIKit */,
 			);
 			path = Sources;
@@ -1841,7 +1818,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCAF117D24202C9600483288 /* LoginSwiftView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1881,7 +1857,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCAF11A924202FF200483288 /* NewGameSwiftView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1913,7 +1888,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCAF119C24202F1300483288 /* GameSwiftView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1929,7 +1903,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCAF1152242029EE00483288 /* TwoFactorSwiftView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1953,7 +1926,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCAF11DC2420340900483288 /* AppSwiftView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2530,7 +2502,6 @@
 		DC9194CD2420142700A5BE1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2548,7 +2519,6 @@
 		DC9194CE2420142700A5BE1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2764,7 +2734,6 @@
 		DC91953524201A8100A5BE1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2782,7 +2751,6 @@
 		DC91953624201A8100A5BE1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2943,7 +2911,6 @@
 		DC91957924201A8E00A5BE1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2961,7 +2928,6 @@
 		DC91957A24201A8E00A5BE1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3034,7 +3000,6 @@
 		DCAF10E3242027D400483288 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3052,7 +3017,6 @@
 		DCAF10E4242027D400483288 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

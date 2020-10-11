@@ -1,5 +1,4 @@
 import ComposableArchitecture
-import SwiftUI
 
 public enum Player: Equatable {
   case o

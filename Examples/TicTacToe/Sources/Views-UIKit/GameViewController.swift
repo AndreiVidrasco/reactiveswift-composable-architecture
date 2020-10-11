@@ -116,12 +116,12 @@ public final class GameViewController: UIViewController {
         ])
       }
 
-    self.viewStore.produced.title
+    self.viewStore.value(\.title)
       .assign(to: \.text, on: titleLabel)
 
-    self.viewStore.produced.isPlayAgainButtonHidden
+    self.viewStore.value(\.isPlayAgainButtonHidden)
       .assign(to: \.isHidden, on: playAgainButton)
-
+    
     self.viewStore.produced.producer.map { ($0.board, $0.isGameEnabled) }
       .skipRepeats(==)
       .startWithValues { board, isGameEnabled in
