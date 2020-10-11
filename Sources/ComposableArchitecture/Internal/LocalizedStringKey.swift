@@ -29,3 +29,4 @@ extension LocalizedStringKey: CustomDebugOutputConvertible {
     self.formatted().debugDescription
   }
 }
+#endif

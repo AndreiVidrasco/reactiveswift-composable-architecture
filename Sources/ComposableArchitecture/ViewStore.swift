@@ -1,3 +1,4 @@
+#if canImport(Combine) && canImport(SwiftUI)
 import Combine
 import ReactiveSwift
 import SwiftUI
@@ -248,3 +249,4 @@ extension ViewStore where State: Equatable {
     self.init(store, removeDuplicates: ==)
   }
 }
+#endif
