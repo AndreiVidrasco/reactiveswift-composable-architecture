@@ -1,4 +1,4 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.0
 
 import PackageDescription
 
@@ -25,8 +25,8 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(url: "https://github.com/pointfreeco/swift-case-paths", from: "0.1.1"),
-    .package(url: "https://github.com/ReactiveCocoa/ReactiveSwift", from: "6.4.0"),
+    .package(url: "https://github.com/AndreiVidrasco/swift-case-paths", .branch("android")),
+    .package(url: "https://github.com/AndreiVidrasco/ReactiveSwift", .branch("android")),
   ],
   targets: [
     .target(
