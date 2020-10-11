@@ -20,7 +20,7 @@ extension Effect {
     on scheduler: DateScheduler,
     latest: Bool
   ) -> Effect<Value, Error> {
-    self.flatMap(.latest) { value -> Effect<Value, Error> in
+    return self.flatMap(.latest) { value -> Effect<Value, Error> in
       guard let throttleTime = throttleTimes[id] as! Date? else {
         throttleTimes[id] = scheduler.currentDate
         throttleValues[id] = nil

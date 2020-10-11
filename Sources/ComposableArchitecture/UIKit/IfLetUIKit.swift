@@ -78,6 +78,6 @@ extension Store {
   public func ifLet<Wrapped>(
     then unwrap: @escaping (Store<Wrapped, Action>) -> Void
   ) -> Disposable where State == Wrapped? {
-    self.ifLet(then: unwrap, else: {})
+    return self.ifLet(then: unwrap, else: {})
   }
 }

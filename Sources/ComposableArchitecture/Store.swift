@@ -9,7 +9,7 @@ import ReactiveSwift
 public final class Store<State, Action> {
     private(set) var mutablePropertyState: MutableProperty<State>
     private(set) var state: State {
-        get { mutablePropertyState.value }
+        get { return mutablePropertyState.value }
         set { mutablePropertyState.value = newValue }
     }
   private var isSending = false
@@ -82,7 +82,7 @@ public final class Store<State, Action> {
   public func scope<LocalState>(
     state toLocalState: @escaping (State) -> LocalState
   ) -> Store<LocalState, Action> {
-    self.scope(state: toLocalState, action: { $0 })
+    return self.scope(state: toLocalState, action: { $0 })
   }
 
   /// Scopes the store to a producer of stores of more local state and local actions.
@@ -132,7 +132,7 @@ public final class Store<State, Action> {
   public func scope<LocalState>(
     state toLocalState: @escaping (Effect<State, Never>) -> Effect<LocalState, Never>
   ) -> Effect<Store<LocalState, Action>, Never> {
-    self.scope(state: toLocalState, action: { $0 })
+    return self.scope(state: toLocalState, action: { $0 })
   }
 
   func send(_ action: Action) {
@@ -167,12 +167,12 @@ public final class Store<State, Action> {
 
   /// Returns a "stateless" store by erasing state to `Void`.
   public var stateless: Store<Void, Action> {
-    self.scope(state: { _ in () })
+    return self.scope(state: { _ in () })
   }
 
   /// Returns an "actionless" store by erasing action to `Never`.
   public var actionless: Store<State, Never> {
-    func absurd<A>(_ never: Never) -> A {}
+    func absurd<A>(_ never: Never) -> A { switch never {} }
     return self.scope(state: { $0 }, action: absurd)
   }
 
@@ -186,19 +186,11 @@ public final class Store<State, Action> {
 }
 
 /// A producer of store state.
-@dynamicMemberLookup
 public struct Produced<Value>: SignalProducerConvertible {
   public let producer: Effect<Value, Never>
 
   init(by upstream: Effect<Value, Never>) {
     self.producer = upstream
-  }
-
-  /// Returns the resulting producer of a given key path.
-  public subscript<LocalValue>(
-    dynamicMember keyPath: KeyPath<Value, LocalValue>
-  ) -> Effect<LocalValue, Never> where LocalValue: Equatable {
-    self.producer.map(keyPath).skipRepeats()
   }
 }
 

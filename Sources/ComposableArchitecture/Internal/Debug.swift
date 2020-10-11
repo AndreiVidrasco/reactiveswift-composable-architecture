@@ -146,7 +146,7 @@ func debugOutput(_ value: Any, indent: Int = 0) -> String {
 
 func debugDiff<T>(_ before: T, _ after: T, printer: (T) -> String = { debugOutput($0) }) -> String?
 {
-  diff(printer(before), printer(after))
+    return diff(printer(before), printer(after))
 }
 
 extension String {
@@ -162,7 +162,7 @@ public protocol CustomDebugOutputConvertible {
 
 extension Date: CustomDebugOutputConvertible {
   public var debugOutput: String {
-    dateFormatter.string(from: self)
+    return dateFormatter.string(from: self)
   }
 }
 
@@ -284,7 +284,7 @@ extension RunLoop: CustomDebugOutputConvertible {
 
 extension URL: CustomDebugOutputConvertible {
   public var debugOutput: String {
-    self.absoluteString
+    return self.absoluteString
   }
 }
 

@@ -1,6 +1,31 @@
 #if DEBUG
   import ReactiveSwift
   import Foundation
+func debugCaseOutput(_ value: Any) -> String {
+  func debugCaseOutputHelp(_ value: Any) -> String {
+    let mirror = Mirror(reflecting: value)
+    switch mirror.displayStyle {
+    case .enum?:
+      guard let child = mirror.children.first else {
+        let childOutput = "\(value)"
+        return childOutput == "\(type(of: value))" ? "" : ".\(childOutput)"
+      }
+      let childOutput = debugCaseOutputHelp(child.value)
+      return ".\(child.label ?? "")\(childOutput.isEmpty ? "" : "(\(childOutput))")"
+    case .tuple?:
+      return mirror.children.map { label, value in
+        let childOutput = debugCaseOutputHelp(value)
+        return
+          "\(label.map { "\($0):" } ?? "")\(childOutput.isEmpty ? "" : " \(childOutput)")"
+      }
+      .joined(separator: ", ")
+    default:
+      return ""
+    }
+  }
+
+  return "\(type(of: value))\(debugCaseOutputHelp(value))"
+}
 
   /// A testable runtime for a reducer.
   ///
@@ -253,9 +278,9 @@
       )
 
       defer { self.state = store.mutablePropertyState.value }
-      let viewStore = ViewStore(
-        store.scope(state: self.toLocalState, action: TestAction.send)
-      )
+//      let viewStore = ViewStore(
+//        store.scope(state: self.toLocalState, action: TestAction.send)
+//      )
 
       for step in steps {
         var expectedState = toLocalState(snapshotState)
@@ -298,7 +323,7 @@
               file: step.file, line: step.line
             )
           }
-          viewStore.send(action)
+//          viewStore.send(action)
           do {
             try update(&expectedState)
           } catch {
@@ -441,7 +466,7 @@
       state toLocalState: @escaping (LocalState) -> S,
       action fromLocalAction: @escaping (A) -> LocalAction
     ) -> TestStore<State, S, Action, A, Environment> {
-      .init(
+        return .init(
         environment: self.environment,
         fromLocalAction: { self.fromLocalAction(fromLocalAction($0)) },
         initialState: self.state,
@@ -458,7 +483,7 @@
     public func scope<S>(
       state toLocalState: @escaping (LocalState) -> S
     ) -> TestStore<State, S, Action, LocalAction, Environment> {
-      self.scope(state: toLocalState, action: { $0 })
+        return self.scope(state: toLocalState, action: { $0 })
     }
 
     /// A single step of a `TestStore` assertion.
@@ -491,7 +516,7 @@
         line: UInt = #line,
         _ update: @escaping (inout LocalState) throws -> Void = { _ in }
       ) -> Step {
-        Step(.send(action, update), file: file, line: line)
+        return Step(.send(action, update), file: file, line: line)
       }
 
       /// A step that describes an action received by an effect and asserts against how the store's
@@ -508,7 +533,7 @@
         line: UInt = #line,
         _ update: @escaping (inout LocalState) throws -> Void = { _ in }
       ) -> Step {
-        Step(.receive(action, update), file: file, line: line)
+        return Step(.receive(action, update), file: file, line: line)
       }
 
       /// A step that updates a test store's environment.
@@ -521,7 +546,7 @@
         line: UInt = #line,
         _ update: @escaping (inout Environment) throws -> Void
       ) -> Step {
-        Step(.environment(update), file: file, line: line)
+        return Step(.environment(update), file: file, line: line)
       }
 
       /// A step that captures some work to be done between assertions
@@ -533,7 +558,7 @@
         line: UInt = #line,
         _ work: @escaping () throws -> Void
       ) -> Step {
-        Step(.do(work), file: file, line: line)
+        return Step(.do(work), file: file, line: line)
       }
 
       fileprivate enum StepType {

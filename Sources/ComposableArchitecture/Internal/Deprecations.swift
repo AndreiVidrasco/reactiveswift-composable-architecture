@@ -3,6 +3,6 @@
 extension Reducer {
   @available(*, deprecated, renamed: "optional()")
   public var optional: Reducer<State?, Action, Environment> {
-    self.optional()
+    return self.optional()
   }
 }

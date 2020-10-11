@@ -41,7 +41,7 @@ extension Reducer {
       DebugEnvironment()
     }
   ) -> Reducer {
-    self.debug(
+    return self.debug(
       prefix,
       state: { $0 },
       action: .self,
@@ -68,7 +68,7 @@ extension Reducer {
       DebugEnvironment()
     }
   ) -> Reducer {
-    self.debug(
+    return self.debug(
       prefix,
       state: { _ in () },
       action: .self,
@@ -99,39 +99,7 @@ extension Reducer {
       DebugEnvironment()
     }
   ) -> Reducer {
-    #if DEBUG
-      return .init { state, action, environment in
-        let previousState = toLocalState(state)
-        let effects = self.run(&state, action, environment)
-        guard let localAction = toLocalAction.extract(from: action) else { return effects }
-        let nextState = toLocalState(state)
-        let debugEnvironment = toDebugEnvironment(environment)
-        return .concatenate(
-          .fireAndForget {
-            debugEnvironment.queue.async {
-              let actionOutput =
-                actionFormat == .prettyPrint
-                ? debugOutput(localAction).indent(by: 2)
-                : debugCaseOutput(localAction).indent(by: 2)
-              let stateOutput =
-                LocalState.self == Void.self
-                ? ""
-                : debugDiff(previousState, nextState).map { "\($0)\n" } ?? "  (No state changes)\n"
-              debugEnvironment.printer(
-                """
-                \(prefix.isEmpty ? "" : "\(prefix): ")received action:
-                \(actionOutput)
-                \(stateOutput)
-                """
-              )
-            }
-          },
-          effects
-        )
-      }
-    #else
       return self
-    #endif
   }
 }
 
