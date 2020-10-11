@@ -1,4 +1,8 @@
 import Foundation
+#if os(Linux) || os(Android)
+    import let CDispatch.NSEC_PER_USEC
+    import let CDispatch.NSEC_PER_SEC
+#endif
 
 func debugOutput(_ value: Any, indent: Int = 0) -> String {
   var visitedItems: Set<ObjectIdentifier> = []
@@ -175,7 +179,7 @@ private let dateFormatter: ISO8601DateFormatter = {
 extension DispatchQueue: CustomDebugOutputConvertible {
   public var debugOutput: String {
     switch (self, self.label) {
-    case (.main, _): return "DispatchQueue.main"
+//    case (.main, _): return "DispatchQueue.main"
     case (_, "com.apple.root.default-qos"): return "DispatchQueue.global()"
     case (_, _) where self.label == "com.apple.root.\(self.qos.qosClass)-qos":
       return "DispatchQueue.global(qos: .\(self.qos.qosClass))"
