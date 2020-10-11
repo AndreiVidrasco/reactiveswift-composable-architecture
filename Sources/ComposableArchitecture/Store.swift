@@ -7,7 +7,11 @@ import ReactiveSwift
 /// You will typically construct a single one of these at the root of your application, and then use
 /// the `scope` method to derive more focused stores that can be passed to subviews.
 public final class Store<State, Action> {
-  @MutableProperty private(set) var state: State
+    private(set) var mutablePropertyState: MutableProperty<State>
+    private(set) var state: State {
+        get { mutablePropertyState.value }
+        set { mutablePropertyState.value = newValue }
+    }
   private var isSending = false
   private let reducer: (inout State, Action) -> Effect<Action, Never>
   private var synchronousActionsToSend: [Action] = []
@@ -66,7 +70,7 @@ public final class Store<State, Action> {
         return .none
       }
     )
-    self.$state.producer
+    self.mutablePropertyState.producer
       .startWithValues { [weak localStore] newValue in localStore?.state = toLocalState(newValue) }
     return localStore
   }
@@ -100,7 +104,7 @@ public final class Store<State, Action> {
       return localState
     }
 
-    return toLocalState(self.$state.producer)
+    return toLocalState(self.mutablePropertyState.producer)
       .map { localState in
         let localStore = Store<LocalState, LocalAction>(
           initialState: localState,
@@ -110,7 +114,7 @@ public final class Store<State, Action> {
             return .none
           })
 
-        self.$state.producer
+        self.mutablePropertyState.producer
           .startWithValues { [weak localStore] state in
             guard let localStore = localStore else { return }
             localStore.state = extractLocalState(state) ?? localStore.state
@@ -177,7 +181,7 @@ public final class Store<State, Action> {
     reducer: @escaping (inout State, Action) -> Effect<Action, Never>
   ) {
     self.reducer = reducer
-    self.state = initialState
+    self.mutablePropertyState = MutableProperty(initialState)
   }
 }
 

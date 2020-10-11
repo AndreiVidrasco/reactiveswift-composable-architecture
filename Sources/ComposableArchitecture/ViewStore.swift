@@ -74,7 +74,7 @@ public final class ViewStore<State, Action>: ObservableObject {
     _ store: Store<State, Action>,
     removeDuplicates isDuplicate: @escaping (State, State) -> Bool
   ) {
-    let producer = store.$state.producer.skipRepeats(isDuplicate)
+    let producer = store.mutablePropertyState.producer.skipRepeats(isDuplicate)
     self.produced = Produced(by: producer)
     self.state = store.state
     self._send = store.send

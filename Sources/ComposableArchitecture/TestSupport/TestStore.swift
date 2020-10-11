@@ -252,7 +252,7 @@
         environment: ()
       )
 
-      defer { self.state = store.$state.value }
+      defer { self.state = store.mutablePropertyState.value }
       let viewStore = ViewStore(
         store.scope(state: self.toLocalState, action: TestAction.send)
       )
