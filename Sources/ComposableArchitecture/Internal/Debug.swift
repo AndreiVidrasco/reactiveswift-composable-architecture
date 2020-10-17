@@ -287,12 +287,6 @@ extension RunLoop: CustomDebugOutputConvertible {
   }
 }
 
-extension URL: CustomDebugOutputConvertible {
-  public var debugOutput: String {
-    return self.absoluteString
-  }
-}
-
 #if DEBUG
   #if canImport(CoreLocation)
     import CoreLocation

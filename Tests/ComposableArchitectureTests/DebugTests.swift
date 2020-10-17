@@ -243,10 +243,6 @@ final class DebugTests: XCTestCase {
       "2001-01-01T00:00:00Z"
     )
     XCTAssertEqual(
-      debugOutput(URL(string: "https://www.pointfree.co")!),
-      "https://www.pointfree.co"
-    )
-    XCTAssertEqual(
       debugOutput(DispatchQueue.main),
       "DispatchQueue.main"
     )
