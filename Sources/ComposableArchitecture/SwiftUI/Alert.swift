@@ -90,7 +90,7 @@ import Foundation
 ///       }
 ///     )
 ///
-public struct AlertState {
+public struct AlertState: Equatable {
   public let id = UUID()
   public var message: String?
   public var primaryButton: Button?
@@ -119,7 +119,7 @@ public struct AlertState {
     self.secondaryButton = secondaryButton
     }
     
-    public enum Button {
+    public enum Button: Equatable {
         case cancel(label: String?)
         case `default`(label: String)
         case destructive(label: String)
