@@ -41,7 +41,7 @@ extension Reducer {
       DebugEnvironment()
     }
   ) -> Reducer {
-    self.debug(
+    return self.debug(
       prefix,
       state: { $0 },
       action: .self,
@@ -68,7 +68,7 @@ extension Reducer {
       DebugEnvironment()
     }
   ) -> Reducer {
-    self.debug(
+    return self.debug(
       prefix,
       state: { _ in () },
       action: .self,
@@ -99,7 +99,6 @@ extension Reducer {
       DebugEnvironment()
     }
   ) -> Reducer {
-    #if DEBUG
       return .init { state, action, environment in
         let previousState = toLocalState(state)
         let effects = self.run(&state, action, environment)
@@ -129,9 +128,6 @@ extension Reducer {
           effects
         )
       }
-    #else
-      return self
-    #endif
   }
 }
 

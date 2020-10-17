@@ -17,7 +17,7 @@ extension Effect {
   /// An effect that does nothing and completes immediately. Useful for situations where you must
   /// return an effect, but you don't need to do anything.
   public static var none: Effect {
-    .empty
+    return .empty
   }
 
   /// Creates an effect that executes some work in the real world that doesn't need to feed data
@@ -26,7 +26,7 @@ extension Effect {
   /// - Parameter work: A closure encapsulating some work to execute in the real world.
   /// - Returns: An effect.
   public static func fireAndForget(_ work: @escaping () -> Void) -> Effect {
-    .deferred { () -> SignalProducer<Value, Error> in
+    return .deferred { () -> SignalProducer<Value, Error> in
       work()
       return .empty
     }
@@ -38,7 +38,7 @@ extension Effect {
   /// - Parameter effects: A variadic list of effects.
   /// - Returns: A new effect
   public static func concatenate(_ effects: Effect...) -> Effect {
-    .concatenate(effects)
+    return .concatenate(effects)
   }
 
   /// Concatenates a collection of effects together into a single effect, which runs the effects one
@@ -65,7 +65,7 @@ extension Effect {
   public static func deferred(_ createProducer: @escaping () -> SignalProducer<Value, Error>)
     -> SignalProducer<Value, Error>
   {
-    Effect<Void, Error>(value: ())
+    return Effect<Void, Error>(value: ())
       .flatMap(.merge, createProducer)
   }
 
@@ -97,7 +97,7 @@ extension Effect {
   public static func future(
     _ attemptToFulfill: @escaping (@escaping (Result<Value, Error>) -> Void) -> Void
   ) -> Effect {
-    SignalProducer { observer, _ in
+    return SignalProducer { observer, _ in
       attemptToFulfill { result in
         switch result {
         case let .success(value):
@@ -123,7 +123,7 @@ extension Effect {
   ///
   /// - Returns: An effect that wraps `self`.
   public func catchToEffect() -> Effect<Result<Value, Error>, Never> {
-    self.map(Result<Value, Error>.success)
+    return self.map(Result<Value, Error>.success)
       .flatMapError { Effect<Result<Value, Error>, Never>(value: Result.failure($0)) }
   }
 }
@@ -143,12 +143,12 @@ extension Effect where Value == Never {
   ///
   /// - Returns: An effect.
   public func fireAndForget<T>() -> Effect<T, Error> {
-    func absurd<A>(_ never: Never) -> A {}
+    func absurd<A>(_ never: Never) -> A { switch never {} }
     return self.map(absurd)
   }
 }
 
-extension Effect where Self.Error == Never {
+extension Effect where Error == Never {
 
   /// Assigns each element from an Effect to a property on an object.
   ///
@@ -157,10 +157,10 @@ extension Effect where Self.Error == Never {
   ///   - object: The object on which to assign the value.
   /// - Returns: Disposable instance
   @discardableResult
-  public func assign<Root>(to keyPath: ReferenceWritableKeyPath<Root, Self.Value>, on object: Root)
+  public func assign<Root>(to keyPath: ReferenceWritableKeyPath<Root, Value>, on object: Root)
     -> Disposable
   {
-    self.startWithValues { value in
+    return self.startWithValues { value in
       object[keyPath: keyPath] = value
     }
   }

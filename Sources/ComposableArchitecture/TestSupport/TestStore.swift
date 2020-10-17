@@ -252,7 +252,7 @@
         environment: ()
       )
 
-      defer { self.state = store.$state.value }
+      defer { self.state = store.dState.value }
       let viewStore = ViewStore(
         store.scope(state: self.toLocalState, action: TestAction.send)
       )
@@ -441,7 +441,7 @@
       state toLocalState: @escaping (LocalState) -> S,
       action fromLocalAction: @escaping (A) -> LocalAction
     ) -> TestStore<State, S, Action, A, Environment> {
-      .init(
+      return .init(
         environment: self.environment,
         fromLocalAction: { self.fromLocalAction(fromLocalAction($0)) },
         initialState: self.state,
