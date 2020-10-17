@@ -458,7 +458,7 @@
     public func scope<S>(
       state toLocalState: @escaping (LocalState) -> S
     ) -> TestStore<State, S, Action, LocalAction, Environment> {
-      self.scope(state: toLocalState, action: { $0 })
+      return self.scope(state: toLocalState, action: { $0 })
     }
 
     /// A single step of a `TestStore` assertion.
@@ -491,7 +491,7 @@
         line: UInt = #line,
         _ update: @escaping (inout LocalState) throws -> Void = { _ in }
       ) -> Step {
-        Step(.send(action, update), file: file, line: line)
+        return Step(.send(action, update), file: file, line: line)
       }
 
       /// A step that describes an action received by an effect and asserts against how the store's
@@ -508,7 +508,7 @@
         line: UInt = #line,
         _ update: @escaping (inout LocalState) throws -> Void = { _ in }
       ) -> Step {
-        Step(.receive(action, update), file: file, line: line)
+        return Step(.receive(action, update), file: file, line: line)
       }
 
       /// A step that updates a test store's environment.
@@ -521,7 +521,7 @@
         line: UInt = #line,
         _ update: @escaping (inout Environment) throws -> Void
       ) -> Step {
-        Step(.environment(update), file: file, line: line)
+        return Step(.environment(update), file: file, line: line)
       }
 
       /// A step that captures some work to be done between assertions
@@ -533,7 +533,7 @@
         line: UInt = #line,
         _ work: @escaping () throws -> Void
       ) -> Step {
-        Step(.do(work), file: file, line: line)
+        return Step(.do(work), file: file, line: line)
       }
 
       fileprivate enum StepType {
