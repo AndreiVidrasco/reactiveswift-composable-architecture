@@ -28,7 +28,7 @@ extension Effect {
     interval: TimeInterval,
     scheduler: DateScheduler
   ) -> Effect<Value, Error> {
-    Effect<Void, Never>.init(value: ())
+    return Effect<Void, Never>.init(value: ())
       .promoteError(Error.self)
       .delay(interval, on: scheduler)
       .flatMap(.latest) { self }

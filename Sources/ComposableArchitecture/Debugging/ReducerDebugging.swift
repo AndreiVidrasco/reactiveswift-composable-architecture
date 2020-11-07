@@ -41,7 +41,7 @@ extension Reducer {
       DebugEnvironment()
     }
   ) -> Reducer {
-    self.debug(
+    return self.debug(
       prefix,
       state: { $0 },
       action: .self,
@@ -68,7 +68,7 @@ extension Reducer {
       DebugEnvironment()
     }
   ) -> Reducer {
-    self.debug(
+    return self.debug(
       prefix,
       state: { _ in () },
       action: .self,

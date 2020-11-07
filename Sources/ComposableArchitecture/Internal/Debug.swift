@@ -5,6 +5,36 @@ import Foundation
   import let CDispatch.NSEC_PER_SEC
 #endif
 
+func debugCaseOutput(_ value: Any) -> String {
+  func debugCaseOutputHelp(_ value: Any) -> String {
+    let mirror = Mirror(reflecting: value)
+    switch mirror.displayStyle {
+    case .enum?:
+      guard let child = mirror.children.first else {
+        let childOutput = "\(value)"
+        return childOutput == "\(type(of: value))" ? "" : ".\(childOutput)"
+      }
+      let childOutput = debugCaseOutputHelp(child.value)
+      return ".\(child.label ?? "")\(childOutput.isEmpty ? "" : "(\(childOutput))")"
+    case .tuple?:
+      return mirror.children.map { label, value in
+        let childOutput = debugCaseOutputHelp(value)
+        return
+          "\(label.map { isUnlabeledArgument($0) ? "_:" : "\($0):" } ?? "")\(childOutput.isEmpty ? "" : " \(childOutput)")"
+      }
+      .joined(separator: ", ")
+    default:
+      return ""
+    }
+  }
+
+  return "\(type(of: value))\(debugCaseOutputHelp(value))"
+}
+
+private func isUnlabeledArgument(_ label: String) -> Bool {
+  return label.firstIndex(where: { $0 != "." && !$0.isNumber }) == nil
+}
+
 func debugOutput(_ value: Any, indent: Int = 0) -> String {
   var visitedItems: Set<ObjectIdentifier> = []
 
@@ -151,7 +181,7 @@ func debugOutput(_ value: Any, indent: Int = 0) -> String {
 
 func debugDiff<T>(_ before: T, _ after: T, printer: (T) -> String = { debugOutput($0) }) -> String?
 {
-  diff(printer(before), printer(after))
+  return diff(printer(before), printer(after))
 }
 
 extension String {
@@ -167,7 +197,7 @@ public protocol CustomDebugOutputConvertible {
 
 extension Date: CustomDebugOutputConvertible {
   public var debugOutput: String {
-    dateFormatter.string(from: self)
+    return dateFormatter.string(from: self)
   }
 }
 
@@ -188,7 +218,7 @@ extension RunLoop: CustomDebugOutputConvertible {
 
 extension URL: CustomDebugOutputConvertible {
   public var debugOutput: String {
-    self.absoluteString
+    return self.absoluteString
   }
 }
 
